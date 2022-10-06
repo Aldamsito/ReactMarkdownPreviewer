@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+
+$dark: #288c7e;
+$light: #49ffe9;
+$background: #619e9e;
+
+$shadow: 5px 5px 10px 2px darken($dark, 10%);
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+#app{
+  display:block;
+  min-height:100%;
+}
+
+body {
+  font-family: "Ubuntu Mono", monospace, Roboto, "Helvetica Neue", Arial,
+    "Noto Sans", sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background: linear-gradient(0deg, $background 0%, $light 100%);
+}
+
+.colorScheme {
+  background-color: lighten($background, 40%);
+  border-top: none;
+}
+
+#title {
+  @extend .colorScheme;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  background-color: $light;
+  border-bottom: 5px dotted black;
+  h1 {
+    margin: 0;
+    padding-left: 15px;
+  }
+  i {
+    margin-left: 55px;
+  }
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  background-color: lighten($dark, 35%);
+  padding: 0.3rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  padding-left: 1rem;
+  border-bottom: 2px solid black;
+  overflow: hidden;
+  i {
+    margin-left: auto;
+  }
+}
+
+#appWrap {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+
+  justify-content: space-around;
+  align-items: normal;
+  align-content: normal;
+
+  min-height: 100vh;
+
+  .editorWrap,
+  .previewWrap {
+    flex-grow: 1;
+    flex-shrink: 1;
+    width: 100%;
+    margin: 1vw;
+    border: 3px solid black;
+    box-shadow: $shadow;
+    border-radius: 5px;
+    transition: all .5s ease;
+  }
+}
+
+.fa-retweet,
+.fa-compress,
+.fa-expand {
+  margin-right: 10px;
+  &:hover {
+    color: lighten($light, 10%);
+    cursor: pointer;
+  }
+}
+
+.editorWrap {
+  @extend .colorScheme;
+  display: flex;
+  flex-direction: column;
+  textarea {
+    @extend .colorScheme;
+    height: 100%;
+font-size:1rem;   
+ padding: 15px;
+    resize: none;
+    outline: none;
+    border: none;
+  }
+}
+
+.previewWrap {
+  @extend .colorScheme;
+  display: flex;
+  flex-direction: column;
+}
+
+.hide {
+  &.editorWrap,
+  &.previewWrap {
+    width: 0 !important;
+  }
+  visibility:hidden;
+}
+
+// MARKDOWN STYLES
+#preview {
+  padding: 0 1rem;
+
+  blockquote {
+    border-left: 3px solid #224b4b;
+    color: #224b4b;
+    padding-left: 5px;
+    margin-left: 25px;
+  }
+
+  > p > code {
+    padding: 3px;
+  }
+
+  code {
+    background: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+
+  pre {
+    display: block;
+    overflow: auto;
+    background: white;
+    padding: 5px;
+    line-height: 1.2;
+  }
+
+  h1 {
+    border-bottom: 2px solid $dark;
+  }
+
+  h2 {
+    border-bottom: 1px solid $dark;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    border: 2px solid $dark;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  img {
+    display: block;
+    max-width: 90%;
+    margin: 2rem auto;
+  }
+}
